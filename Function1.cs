@@ -1,4 +1,5 @@
 using System;
+using BidFunctionApp.Models;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 
@@ -14,7 +15,7 @@ namespace BidsFunctionProcessor
         }
 
         [Function("Function1")]
-        public void Run([RabbitMQTrigger("bids_process", ConnectionStringSetting = "RabbitMQConnectionString")] string myQueueItem)
+        public void Run([RabbitMQTrigger("bids_process", ConnectionStringSetting = "RabbitMQConnectionString")] Bid myQueueItem)
         {
             _logger.LogInformation($"C# Queue trigger function processed: {myQueueItem}");
         }
